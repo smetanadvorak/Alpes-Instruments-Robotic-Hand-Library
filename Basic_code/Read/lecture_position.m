@@ -1,4 +1,5 @@
-% TASK: Get the position measurement from the register for one finger.
+% TASK: Get the position measurement from the register 26 (POSITION_CODEUR)
+% for one finger.
 % INPUT:
 %   s is the serial port associated to the hand
 %   doigt is the integer number corresponding to the considered finger

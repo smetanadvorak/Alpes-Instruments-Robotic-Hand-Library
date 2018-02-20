@@ -1,4 +1,4 @@
-% TASK: Get the velocity measurement from the register (27-VITESSE_MOTEUR).
+% TASK: Get the velocity measurement from the register 27 (VITESSE_MOTEUR).
 % INPUT:
 %   s is the serial port associated to the hand
 %   doigt is the integer number corresponding to the considered finger

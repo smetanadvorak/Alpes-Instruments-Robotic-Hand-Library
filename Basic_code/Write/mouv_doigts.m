@@ -4,7 +4,7 @@
 %   doigt integer number associated to the finger we want to move
 %   pos desired position for the finger 'doigt'.
 
-function mouv_doigts(pos,doigt,s)
+function mouv_doigts(pos, doigt, s)
 
 % Transform the position info in such a way the hand can understand it. The
 % pos variable is transformed in hexadecimal and if its length is not 4,
@@ -59,7 +59,8 @@ Registre_faible=hex2dec('02'); % least significant byte of the register number
 Registre_fort=hex2dec('00'); % most significant byte of the register number
 
 % CRC16 computation
-buf=[mot_commande,mot_commande2,Pos_mem_faible,Pos_mem_fort,Registre_faible,Registre_fort,01,00,00,00,position_faible,position_fort,00,00];
+buf=[mot_commande,mot_commande2,Pos_mem_faible,Pos_mem_fort,Registre_faible,...
+        Registre_fort,01,00,00,00,position_faible,position_fort,00,00];
 [crc16hi,crc16lo]=CRC16(buf);
 
 % Write the command on the register
