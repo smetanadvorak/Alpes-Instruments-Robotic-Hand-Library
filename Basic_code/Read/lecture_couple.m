@@ -1,10 +1,10 @@
 % TASK: Get the motor torque measurement using 26th register.
-% constante de couple:
-%           couple nominal :Cpn=2.03 mNm
-%           Courant nominal:Cn=0.211 A
-%           couple de démarrage:Cpd=4.38mNm 
-%           courant de démarrage:Cd=0.438A
-% soit Kt=(Cpd-Cn)/(Cd-Cn)=10.35
+% constants:
+%           nominal torque :    Cpn=2.03 mNm
+%           nominal current:    Cn=0.211 A
+%           stall torque:       Cpd=4.38 mNm 
+%           starting current:   Cd=0.438 A
+% then the motor's torque constant Kt = (Cpd-Cn)/(Cd-Cn) = 10.35
 % INPUT:
 %   s is the serial port associated to the hand
 %   doigt is the integer number corresponding to the considered finger 
