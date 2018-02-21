@@ -85,8 +85,7 @@ elseif doigt==4
 % Little finger    
 elseif doigt==5
     Pos_mem_faible=hex2dec('79');
-    Pos_mem_fort=hex2dec('17');
-    
+    Pos_mem_fort=hex2dec('17');    
 end
 
 %-------------------------------------------------------------------
@@ -97,7 +96,7 @@ registre_fort=hex2dec('00');
 
 %CRC16 calcul
 buf=[mot_commande,mot_commande2,Pos_mem_faible,...
-    Pos_mem_fort,registre_faible,registre_fort];
+    Pos_mem_fort,registre_faible,registre_fort,coeff_faible,coeff_fort,coeff_fort2,coeff_fort3];
 [crc16hi,crc16lo]=CRC16(buf);
 
 fwrite(s,[buf,crc16lo,crc16hi]);
