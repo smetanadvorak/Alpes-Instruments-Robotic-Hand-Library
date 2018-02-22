@@ -101,7 +101,7 @@ buf=[mot_commande,mot_commande2,Pos_mem_faible,...
 
 fwrite(s,[buf,crc16lo,crc16hi]);
 
-fread(s,7);
+% fread(s,7);
 
 return;
 

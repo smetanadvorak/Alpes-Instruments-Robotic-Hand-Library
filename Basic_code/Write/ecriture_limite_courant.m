@@ -104,9 +104,10 @@ buf=[mot_commande,mot_commande2,Pos_mem_faible,...
 
 % Send the command to the hand's register
 fwrite(s,[buf,crc16lo,crc16hi]);
+
 % Read the command by the register so as not to interfere with other 
 % readings of the principal
-fread(s,8);
+% fread(s,8);
 
 end
 

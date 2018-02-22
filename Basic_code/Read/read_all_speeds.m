@@ -4,6 +4,7 @@
 %   s is the serial port associated to the hand
 %   times
 
+% CHECK THE OUTPUT
 function [ speed ] = read_all_speeds( s, times )
 
 if times*6*12 > s.InputBufferSize
@@ -18,7 +19,7 @@ mot_commande2=hex2dec('44');
 registre_faible=hex2dec('01');
 registre_fort=hex2dec('00');
 
-%flushinput(s);
+% flushinput(s);
 
 for t = 1:times
     for finger = 0:5

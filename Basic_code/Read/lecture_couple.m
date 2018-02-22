@@ -51,6 +51,8 @@ buf_3=[mot_commande_3,mot_commande2_3,Pos_mem_faible_3,...
     Pos_mem_fort_3,registre_faible_3,registre_fort_3];
 [crc16hi_3,crc16lo_3]=CRC16(buf_3);
 
+% Make the buffer empty to read the correct data
+flushinput(s);
 % Send the command to the hand
 fwrite(s,[buf_3,crc16lo_3,crc16hi_3]);
 
@@ -66,7 +68,6 @@ CPT_TH_1=2;
         if m==6
             amp1=dec2hex(val_1);
         end
-        
         if m==7
             amp2=dec2hex(val_1);
         end   
@@ -75,7 +76,6 @@ CPT_TH_1=2;
     % Transform the data such dìthat it can be transformed in decimal
     ampere_hex=strcat(amp2,amp1);
     ampere_reel=(hex2dec(ampere_hex)*3.3)/65535; % Ratio given by the company
-
     couple_doigt=ampere_reel*10.35;
     return;
 end

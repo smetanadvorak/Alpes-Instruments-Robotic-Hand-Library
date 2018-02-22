@@ -45,37 +45,14 @@ buf=[mot_commande,mot_commande2,Pos_mem_faible,...
     Pos_mem_fort,registre_faible,registre_fort];
 [crc16hi,crc16lo]=CRC16(buf);
 
+% Make the buffer empty to read the correct data
+flushinput(s);
 fwrite(s,[buf,crc16lo,crc16hi]);
 
 % Read the data
-for i=1:8
-    fread(s,1);
-    if i==6
-        val1dec=fread(s,1);
-        val2dec=fread(s,1);
-        val3dec=fread(s,1);
-        val4dec=fread(s,1);
-    end  
-end
-
-val1=dec2hex(val1dec);
-if length(val1)==1
-    val1=strcat('0',val1);
-end
-
-val2=dec2hex(val2dec);
-if length(val2)==1
-    val2=strcat('0',val2);
-end
-
-val3=dec2hex(val3dec);
-if length(val3)==1
-    val3=strcat('0',val3);
-end
-
-val4=dec2hex(val4dec);
-
-val_hex=strcat(val4,val3,val2,val1);
+response = fread(s, 12);
+fs = repmat('%02X', 1, 4);
+val_hex = sprintf(fs,response(10:-1:7));
 
 calcul_p_reel=hex2dec(val_hex);
 % calcule_val=['calcul P = ',num2str(val_d_reel)];

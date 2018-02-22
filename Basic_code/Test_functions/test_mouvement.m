@@ -37,8 +37,8 @@ end
 
 
 %création de la trame
-mot_commande=hex2dec('52');
-mot_commande2=hex2dec('44');
+mot_commande=hex2dec('52'); % R
+mot_commande2=hex2dec('44'); % D
 registre_faible=hex2dec('01');
 registre_fort=hex2dec('00');
 

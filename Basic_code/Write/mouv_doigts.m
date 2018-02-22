@@ -68,7 +68,7 @@ fwrite(s,[buf,crc16lo,crc16hi]);
 
 % Read the command by the register so as not to interfere with other 
 % readings of the principal
-fread(s,7);
+% fread(s,7);
 
 end
 

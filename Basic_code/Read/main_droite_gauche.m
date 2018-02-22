@@ -19,6 +19,8 @@ Pos_mem_fort=hex2dec('0B');%<--- poids fort de la premiere position memoire
 buf=[mot_commande,mot_commande2,Pos_mem_faible,Pos_mem_fort,registre_faible,registre_fort];
 [crc16hi,crc16lo]=CRC16(buf);
 
+% Make the buffer empty to read the correct data
+flushinput(s);
 fwrite(s,[buf,crc16lo,crc16hi]); 
 
 % Read and stop the communication

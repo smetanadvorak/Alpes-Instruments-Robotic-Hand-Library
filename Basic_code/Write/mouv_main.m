@@ -1,28 +1,17 @@
 % TASK: Close the hand completely.
 % INPUT: s is the serial port associated to the hand.
+
 function mouv_main(s)
 
 % Define the maximum position value for aech finger and arrange it in a
 % proper way.
-% The variable is transformed in hexadecimal and if its length is not 4,
-% (length-4) number of 0 are added. The first two characters represents the
-% most significant byte, while the final two are the least significant
-% ones.
-pos_main = 43000;
-pos_hex=dec2hex(pos_main);
-if length(dec2hex(pos_main))==3
-    position_fort=hex2dec(pos_hex(1));
-    position_faible=hex2dec(strcat(pos_hex(2),pos_hex(3)));
-elseif  length(dec2hex(pos_main))==2
-    position_fort=0;
-    position_faible=hex2dec(strcat(pos_hex(1),pos_hex(2)));
-elseif  length(dec2hex(pos_main))==1
-    position_fort=0;
-    position_faible=hex2dec(pos_hex(1));
-elseif  length(dec2hex(pos_main))==4
-    position_fort=hex2dec(strcat(pos_hex(1),pos_hex(2)));
-    position_faible=hex2dec(strcat(pos_hex(3),pos_hex(4)));  
-end
+% The variable is transformed in hexadecimal. The first two characters 
+% represents the most significant byte, while the final two are the least 
+% significant ones.
+
+pos_hex=dec2hex(43000); % Max position for all fingers is 43000
+position_fort=hex2dec(strcat(pos_hex(1),pos_hex(2)));
+position_faible=hex2dec(strcat(pos_hex(3),pos_hex(4)));
 
 % Depending on the finger, define the memory position
 % thumb position
@@ -84,5 +73,6 @@ fwrite(s,[buf_pouce,crc16lo_pouce,crc16hi_pouce]);
 
 % Read the command by the register so as not to interfere with other 
 % readings of the principal
-fread(s,48);
+% fread(s,48);
+
 end

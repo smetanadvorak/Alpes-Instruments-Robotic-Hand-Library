@@ -12,106 +12,106 @@ function close_motion_prop(pos,s)
 % ones.
 
 % thumb rotation
-    pos_hex1=dec2hex(pos(1)); 
-    length_pos1 = length(pos_hex1);
-    if length_pos1==3
-        position_fort_Rpouce=hex2dec(pos_hex1(1));
-        position_faible_Rpouce=hex2dec(strcat(pos_hex1(2),pos_hex1(3)));
-    elseif  length_pos1==2
-        position_fort_Rpouce=0;
-        position_faible_Rpouce=hex2dec(strcat(pos_hex1(1),pos_hex1(2)));
-    elseif  length_pos1==1
-        position_fort_Rpouce=0;
-        position_faible_Rpouce=hex2dec(pos_hex1(1));
-    elseif  length_pos1==4
-        position_fort_Rpouce=hex2dec(strcat(pos_hex1(1),pos_hex1(2)));
-        position_faible_Rpouce=hex2dec(strcat(pos_hex1(3),pos_hex1(4)));
-    end
+pos_hex1=dec2hex(pos(1));
+length_pos1 = length(pos_hex1);
+if length_pos1==3
+    position_fort_Rpouce=hex2dec(pos_hex1(1));
+    position_faible_Rpouce=hex2dec(strcat(pos_hex1(2),pos_hex1(3)));
+elseif  length_pos1==2
+    position_fort_Rpouce=0;
+    position_faible_Rpouce=hex2dec(strcat(pos_hex1(1),pos_hex1(2)));
+elseif  length_pos1==1
+    position_fort_Rpouce=0;
+    position_faible_Rpouce=hex2dec(pos_hex1(1));
+elseif  length_pos1==4
+    position_fort_Rpouce=hex2dec(strcat(pos_hex1(1),pos_hex1(2)));
+    position_faible_Rpouce=hex2dec(strcat(pos_hex1(3),pos_hex1(4)));
+end
 
 % thumb
-    pos_hex2=dec2hex(pos(2));
-    length_pos2 = length(pos_hex2);
-    if length_pos2==3
-        position_fort_pouce=hex2dec(pos_hex2(1));
-        position_faible_pouce=hex2dec(strcat(pos_hex2(2),pos_hex2(3)));
-    elseif  length_pos2==2
-        position_fort_pouce=0;
-        position_faible_pouce=hex2dec(strcat(pos_hex2(1),pos_hex2(2)));
-    elseif  length_pos2==1
-        position_fort_pouce=0;
-        position_faible_pouce=hex2dec(pos_hex2(1));
-    elseif  length_pos2==4
-        position_fort_pouce=hex2dec(strcat(pos_hex2(1),pos_hex2(2)));
-        position_faible_pouce=hex2dec(strcat(pos_hex2(3),pos_hex2(4)));
-    end
+pos_hex2=dec2hex(pos(2));
+length_pos2 = length(pos_hex2);
+if length_pos2==3
+    position_fort_pouce=hex2dec(pos_hex2(1));
+    position_faible_pouce=hex2dec(strcat(pos_hex2(2),pos_hex2(3)));
+elseif  length_pos2==2
+    position_fort_pouce=0;
+    position_faible_pouce=hex2dec(strcat(pos_hex2(1),pos_hex2(2)));
+elseif  length_pos2==1
+    position_fort_pouce=0;
+    position_faible_pouce=hex2dec(pos_hex2(1));
+elseif  length_pos2==4
+    position_fort_pouce=hex2dec(strcat(pos_hex2(1),pos_hex2(2)));
+    position_faible_pouce=hex2dec(strcat(pos_hex2(3),pos_hex2(4)));
+end
 
 % index
-    pos_hex3=dec2hex(pos(3));
-    length_pos3 = length(pos_hex3);
-    if length_pos3==3
-        position_fort_index=hex2dec(pos_hex3(1));
-        position_faible_index=hex2dec(strcat(pos_hex3(2),pos_hex3(3)));
-    elseif  length_pos3==2
-        position_fort_index=0;
-        position_faible_index=hex2dec(strcat(pos_hex3(1),pos_hex3(2)));
-    elseif  length_pos3==1
-        position_fort_index=0;
-        position_faible_index=hex2dec(pos_hex3(1));
-    elseif  length_pos3==4
-        position_fort_index=hex2dec(strcat(pos_hex3(1),pos_hex3(2)));
-        position_faible_index=hex2dec(strcat(pos_hex3(3),pos_hex3(4)));
-    end
+pos_hex3=dec2hex(pos(3));
+length_pos3 = length(pos_hex3);
+if length_pos3==3
+    position_fort_index=hex2dec(pos_hex3(1));
+    position_faible_index=hex2dec(strcat(pos_hex3(2),pos_hex3(3)));
+elseif  length_pos3==2
+    position_fort_index=0;
+    position_faible_index=hex2dec(strcat(pos_hex3(1),pos_hex3(2)));
+elseif  length_pos3==1
+    position_fort_index=0;
+    position_faible_index=hex2dec(pos_hex3(1));
+elseif  length_pos3==4
+    position_fort_index=hex2dec(strcat(pos_hex3(1),pos_hex3(2)));
+    position_faible_index=hex2dec(strcat(pos_hex3(3),pos_hex3(4)));
+end
 
 % middle finger
-    pos_hex4=dec2hex(pos(4));
-    length_pos4 = length(pos_hex4);
-    if length_pos4==3
-        position_fort_majeur=hex2dec(pos_hex4(1));
-        position_faible_majeur=hex2dec(strcat(pos_hex4(2),pos_hex4(3)));
-    elseif  length_pos4==2
-        position_fort_majeur=0;
-        position_faible_majeur=hex2dec(strcat(pos_hex4(1),pos_hex4(2)));
-    elseif  length_pos4==1
-        position_fort_majeur=0;
-        position_faible_majeur=hex2dec(pos_hex4(1));
-    elseif  length_pos4==4
-        position_fort_majeur=hex2dec(strcat(pos_hex4(1),pos_hex4(2)));
-        position_faible_majeur=hex2dec(strcat(pos_hex4(3),pos_hex4(4)));
-    end
+pos_hex4=dec2hex(pos(4));
+length_pos4 = length(pos_hex4);
+if length_pos4==3
+    position_fort_majeur=hex2dec(pos_hex4(1));
+    position_faible_majeur=hex2dec(strcat(pos_hex4(2),pos_hex4(3)));
+elseif  length_pos4==2
+    position_fort_majeur=0;
+    position_faible_majeur=hex2dec(strcat(pos_hex4(1),pos_hex4(2)));
+elseif  length_pos4==1
+    position_fort_majeur=0;
+    position_faible_majeur=hex2dec(pos_hex4(1));
+elseif  length_pos4==4
+    position_fort_majeur=hex2dec(strcat(pos_hex4(1),pos_hex4(2)));
+    position_faible_majeur=hex2dec(strcat(pos_hex4(3),pos_hex4(4)));
+end
 
 %annular
-    pos_hex5=dec2hex(pos(5));
-    length_pos5 = length(pos_hex5);
-    if length_pos5==3
-        position_fort_annulaire=hex2dec(pos_hex5(1));
-        position_faible_annulaire=hex2dec(strcat(pos_hex5(2),pos_hex5(3)));
-    elseif  length_pos5==2
-        position_fort_annulaire=0;
-        position_faible_annulaire=hex2dec(strcat(pos_hex5(1),pos_hex5(2)));
-    elseif  length_pos5==1
-        position_fort_annulaire=0;
-        position_faible_annulaire=hex2dec(pos_hex5(1));
-    elseif  length_pos5==4
-        position_fort_annulaire=hex2dec(strcat(pos_hex5(1),pos_hex5(2)));
-        position_faible_annulaire=hex2dec(strcat(pos_hex5(3),pos_hex5(4)));
-    end
-    
+pos_hex5=dec2hex(pos(5));
+length_pos5 = length(pos_hex5);
+if length_pos5==3
+    position_fort_annulaire=hex2dec(pos_hex5(1));
+    position_faible_annulaire=hex2dec(strcat(pos_hex5(2),pos_hex5(3)));
+elseif  length_pos5==2
+    position_fort_annulaire=0;
+    position_faible_annulaire=hex2dec(strcat(pos_hex5(1),pos_hex5(2)));
+elseif  length_pos5==1
+    position_fort_annulaire=0;
+    position_faible_annulaire=hex2dec(pos_hex5(1));
+elseif  length_pos5==4
+    position_fort_annulaire=hex2dec(strcat(pos_hex5(1),pos_hex5(2)));
+    position_faible_annulaire=hex2dec(strcat(pos_hex5(3),pos_hex5(4)));
+end
+
 % little finger
-    pos_hex6=dec2hex(pos(6));
-    length_pos6 = length(pos_hex6);
-    if length_pos6 == 3
-        position_fort_auriculaire=hex2dec(pos_hex6(1));
-        position_faible_auriculaire=hex2dec(strcat(pos_hex6(2),pos_hex6(3)));
-    elseif  length_pos6==2
-        position_fort_auriculaire=0;
-        position_faible_auriculaire=hex2dec(strcat(pos_hex6(1),pos_hex6(2)));
-    elseif  length_pos6==1
-        position_fort_auriculaire=0;
-        position_faible_auriculaire=hex2dec(pos_hex6(1));
-    elseif  length_pos6==4
-        position_fort_auriculaire=hex2dec(strcat(pos_hex6(1),pos_hex6(2)));
-        position_faible_auriculaire=hex2dec(strcat(pos_hex6(3),pos_hex6(4)));
-    end
+pos_hex6=dec2hex(pos(6));
+length_pos6 = length(pos_hex6);
+if length_pos6 == 3
+    position_fort_auriculaire=hex2dec(pos_hex6(1));
+    position_faible_auriculaire=hex2dec(strcat(pos_hex6(2),pos_hex6(3)));
+elseif  length_pos6==2
+    position_fort_auriculaire=0;
+    position_faible_auriculaire=hex2dec(strcat(pos_hex6(1),pos_hex6(2)));
+elseif  length_pos6==1
+    position_fort_auriculaire=0;
+    position_faible_auriculaire=hex2dec(pos_hex6(1));
+elseif  length_pos6==4
+    position_fort_auriculaire=hex2dec(strcat(pos_hex6(1),pos_hex6(2)));
+    position_faible_auriculaire=hex2dec(strcat(pos_hex6(3),pos_hex6(4)));
+end
 
 % Depending on the finger, define the memory position.
 
@@ -168,11 +168,11 @@ fwrite(s,[buf_majeur,crc16lo_majeur,crc16hi_majeur]);
 fwrite(s,[buf_annulaire,crc16lo_annulaire,crc16hi_annulaire]);
 fwrite(s,[buf_auriculaire,crc16lo_auriculaire,crc16hi_auriculaire]);
 % waiting for the thumb to come this put on the other fingers
-pause(0);
+pause(0.5);
 fwrite(s,[buf_pouce,crc16lo_pouce,crc16hi_pouce]);
 
-% Read the command by the register so as not to interfere with other 
+% Read the command by the register so as not to interfere with other
 % readings of the principal
-fread(s,48); 
+% fread(s,48);
 
 end

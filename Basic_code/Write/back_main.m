@@ -1,28 +1,16 @@
 % TASK: Completely open the hand. This configuration corresponds to the
-% default one.
-% INPUT: s is the serial port associated to the hand.
+% reference one.
+% INPUT
+%   s: is the serial port associated to the hand.
 
 function back_main(s)
 
 % In order to open the hand it is necessary to apply a 0 position to the
-% hand joints.
-pos_main2=0000;
+% hand joints. Usually the decimal position is converted in hexadecimal one
+% but in this case is easier:
+position_fort=0;
+position_faible=0;
 
-% Convert the decimal position in hexadecimal and adjust
-pos_hex=dec2hex(pos_main2);
-if length(dec2hex(pos_main2))==3
-    position_fort=hex2dec(pos_hex(1));
-    position_faible=hex2dec(strcat(pos_hex(2),pos_hex(3)));
-elseif  length(dec2hex(pos_main2))==2
-    position_fort=0;
-    position_faible=hex2dec(strcat(pos_hex(1),pos_hex(2)));
-elseif  length(dec2hex(pos_main2))==1
-    position_fort=0;
-    position_faible=hex2dec(pos_hex(1));
-elseif  length(dec2hex(pos_main2))==4
-    position_fort=hex2dec(strcat(pos_hex(1),pos_hex(2)));
-    position_faible=hex2dec(strcat(pos_hex(3),pos_hex(4)));   
-end
 
 % Define the memory position associated to each finger. The first line
 % corresponds to the least significant byte, the second one to the most
@@ -92,7 +80,8 @@ fwrite(s,[buf_annulaire,crc16lo_annulaire,crc16hi_annulaire]);
 fwrite(s,[buf_auriculaire,crc16lo_auriculaire,crc16hi_auriculaire]);
 
 % Read 8 values in hex per finger (6)
-for i = 1:48
-    fread(s,1);
+% fread(s,48);
+
 end
+
 

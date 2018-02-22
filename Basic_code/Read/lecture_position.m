@@ -42,6 +42,7 @@ buf=[mot_commande,mot_commande2,Pos_mem_faible,...
     Pos_mem_fort,registre_faible,registre_fort];
 [crc16hi,crc16lo]=CRC16(buf);
 
+% Make the buffer empty to read the correct data
 flushinput(s);
 % Send the command to the hand's register
 fwrite(s2,[buf,crc16lo,crc16hi]);
@@ -53,37 +54,4 @@ fs = repmat('%02X', 1, 4);
 position_hex = sprintf(fs,response(10:-1:7));
 position = hex2dec(position_hex);
 
-%% Previous version
-% % Read the information
-% for i=1:8
-%     fread(s2,1);
-%     if i==6
-%         pos1dec=fread(s2,1);
-%         pos2dec=fread(s2,1);
-%         pos3dec=fread(s2,1);
-%         pos4dec=fread(s2,1);
-%     end
-% end
-% 
-% % Transform the read data in a understandable information. From ex
-% % character to decimal one. It is necessary to have the length of each
-% % character equals to 2, if it is not a number of 0 equals to (length-2)
-% % has to be added.
-% pos1=dec2hex(pos1dec);
-% if length(pos1)==1
-%     pos1=strcat('0',pos1);
-% end
-% pos2=dec2hex(pos2dec);
-% if length(pos2)==1
-%     pos2=strcat('0',pos2);
-% end
-% pos3=dec2hex(pos3dec);
-% if length(pos3)==1
-%     pos3=strcat('0',pos3);
-% end
-% pos4=dec2hex(pos4dec);
-% 
-% position_hex=strcat(pos4,pos3,pos2,pos1);
-% position=hex2dec(position_hex);
-% 
- end   
+end   

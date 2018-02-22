@@ -41,6 +41,7 @@ buf=[mot_commande,mot_commande2,Pos_mem_faible,...
     Pos_mem_fort,registre_faible,registre_fort];
 [crc16hi,crc16lo]=CRC16(buf);
 
+% Make the buffer empty to read the correct data
 flushinput(s);
 % Send the command to the hand
 fwrite(s,[buf,crc16lo,crc16hi]);
@@ -54,23 +55,4 @@ vitesse=hex2dec(vitesse_hex);
 
 vitesse = vitesse/100;
 
-%% Previous version
-% % Read the information
-% for n=0:11
-%     val=fread(s,1);
-%     if(n==6)
-%         vitesse1=dec2hex(val);
-%     end
-%     if (n==7)
-%         vitesse2=dec2hex(val);
-%     end
-% end
-% 
-% % Transform the data such dìthat it can be transformed in decimal
-% vitesse_hex=strcat(vitesse2,vitesse1);
-% vitesse_reel=hex2dec(vitesse_hex)/100;
-% 
-% vitesse=vitesse_reel;
-% 
-% return;
 end

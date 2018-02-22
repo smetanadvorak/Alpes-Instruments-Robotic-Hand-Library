@@ -44,47 +44,22 @@ buf=[mot_commande,mot_commande2,PWM_mem_faible,...
     PWM_mem_fort,registre_faible,registre_fort];
 [crc16hi,crc16lo]=CRC16(buf);
 
+% Make the buffer empty to read the correct data
+flushinput(s);
 fwrite(s2,[buf,crc16lo,crc16hi]);
 
 % Read the data
-for i=1:8
-    fread(s2,1);
-    if i==6
-        PWM1dec=fread(s2,1);
-        PWM2dec=fread(s2,1);
-        PWM3dec=fread(s2,1);
-        PWM4dec=fread(s2,1);
-    end
-    
-end
-
-% Transform the decimal value in hexadecimal one. 
-PWM1=dec2hex(PWM1dec);
-if length(PWM1)==1
-    PWM1=strcat('0',PWM1);
-end
-
-PWM2=dec2hex(PWM2dec);
-if length(PWM2)==1
-    PWM2=strcat('0',PWM2);
-end
-
-PWM3=dec2hex(PWM3dec);
-if length(PWM3)==1
-    PWM3=strcat('0',PWM3);
-end
-
-% PWM is of type VAR_32. PWM_4 represents the sign
-PWM4=dec2hex(PWM4dec);
-
-PWM_hex=strcat(PWM3,PWM2,PWM1);
+response = fread(s2, 12);
+PWM4dec = response(10);
+fs = repmat('%02X', 1, 3);
+PWM_hex = sprintf(fs,response(9:-1:7));
 PWM=hex2dec(PWM_hex);
 
 % Tension computation
-if strcmp(PWM4,'FF') 
+control = dec2hex(PWM4dec);
+if strcmp(control,'FF') 
     tension = - PWM*12/4095;
 else 
     tension = PWM*12/4095;
 end
-
 end

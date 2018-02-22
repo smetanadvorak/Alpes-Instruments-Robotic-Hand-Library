@@ -108,7 +108,7 @@ fwrite(s,[buf,crc16lo,crc16hi]);
 % 
 % fwrite(s,[buf,crc16lo,crc16hi]);
 
-fread(s,1);
+% fread(s,7);
 
 
 
