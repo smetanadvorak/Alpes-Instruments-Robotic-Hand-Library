@@ -43,11 +43,11 @@ buf=[mot_commande,mot_commande2,Pos_mem_faible,...
 [crc16hi,crc16lo]=CRC16(buf);
 
 % Make the buffer empty to read the correct data
-flushinput(s);
+flushinput(s2);
 % Send the command to the hand's register
 fwrite(s2,[buf,crc16lo,crc16hi]);
 % Read the information
-response = fread(s,12);
+response = fread(s2,12);
 
 %% My version, should be faster, Konstantin:
 fs = repmat('%02X', 1, 4);

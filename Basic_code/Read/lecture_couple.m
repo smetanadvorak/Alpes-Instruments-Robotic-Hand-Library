@@ -1,4 +1,4 @@
-% TASK: Get the motor torque measurement using 26th register.
+% TASK: Get the motor torque measurement using 2nd register (LIMITE_COURANT).
 % constants:
 %           nominal torque :    Cpn=2.03 mNm
 %           nominal current:    Cn=0.211 A
@@ -74,9 +74,9 @@ CPT_TH_1=2;
     end
     
     % Transform the data such dìthat it can be transformed in decimal
-    ampere_hex=strcat(amp2,amp1);
-    ampere_reel=(hex2dec(ampere_hex)*3.3)/65535; % Ratio given by the company
-    couple_doigt=ampere_reel*10.35;
+    ampere_hex = strcat(amp2,amp1);
+    ampere_reel = (hex2dec(ampere_hex)*3.3)/65535; % Ratio given by the company
+    couple_doigt = ampere_reel*10.35;
     return;
 end
     

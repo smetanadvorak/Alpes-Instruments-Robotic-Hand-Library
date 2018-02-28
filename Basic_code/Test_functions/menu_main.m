@@ -127,7 +127,7 @@ uicontrol('Style', 'popup',...
         
         %------------main droite--------------------------------------------
         
-        if ouvert_droit==0;
+        if ouvert_droit==0
             
             fopen(s2);
             ouvert_droit=1;
@@ -179,7 +179,7 @@ uicontrol('Style', 'popup',...
         
         %------------main droite--------------------------------------------
         
-        if ouvert_droit==0;
+        if ouvert_droit==0
             
             fopen(s2);
             ouvert_droit=1;

@@ -1,12 +1,9 @@
+% TASK: Perform the initilization procedure writing 1 on the register in
+% position 100.
+% INPUT
+%   s: serial port associated to the hand
+
 function initialisation(s)
-% paramètre d'entrée: le port série s 
-%
-% Objectif: initialiser la main 
-%
-% méthode :écrit la valeur 1 dans le registre situé
-%          à l'adresse 100, en utilisant le code commande "WR" 
-%
-%
 
 %-----------PARTIE INITIALISATION MESSAGE BOX------------------------------
 %barre de chargement vide pour le commencement
@@ -18,7 +15,7 @@ steps=2650;%<-- MAGIE: testé plusieur fois en metteant une incrémentation dans l
             %   la valeur est différente à chaque fois
 n=0;
 
-%-----------PARTIE INITIALISATION MAIN---------------------
+% Build the command string
 code_ascii_W=hex2dec('57');
 code_ascii_R=hex2dec('52');
 pos_mem_faible=hex2dec('64');
@@ -38,14 +35,10 @@ buf=[code_ascii_W,code_ascii_R,pos_mem_faible,pos_mem_fort,nb_registre_faible,..
 
 fwrite(s,[buf,crc16lo,crc16hi]);
 
-for i=1:8
-    fread(s,1);
-end
+fread(s,8);
+
 %-------------PARTIE LECTURE DE FIN--------------------------
-
-
-%lecture du registre de l'initialisation
-
+% Read the initilization register
 code_ascii_R=hex2dec('52');
 code_ascii_D=hex2dec('44');
 pos_mem_faible1=hex2dec('64');
@@ -64,7 +57,8 @@ fwrite(s,[buf2,crc16lo_2,crc16hi_2]);
 pourcent= floor((n/steps)*100);%<----- Pour affichage sur la fenêtre du pourcentage
 if pourcent<= 100
     waitbar(n/steps,box1,sprintf('%d%% ',pourcent));%<-- chargement de la barre et maj du texte
-else  waitbar(n/steps,box1,'100% ')
+else
+    waitbar(n/steps,box1,'100% ')
 end
 if getappdata(box1,'canceling')%<--- bouton cancel de la message box
      
@@ -84,7 +78,7 @@ n=n+1;% incrémentation du pourcentage
        val=fread(s,1);
        
        if i==7 %<---- seul valeur qui est sensé changer (sauf CRC16)
-           if val==1;% passage de 0 à 1 pour la valeur du poids faible du mot
+           if val==1% passage de 0 à 1 pour la valeur du poids faible du mot
                condition =false;%<--- sortie de boucle
                waitbar(n/steps,box1,'terminé');%<-- affiche terminé
                pause(0.2);%<-- pas forcément utile 

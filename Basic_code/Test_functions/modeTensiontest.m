@@ -320,10 +320,10 @@ tension_Slider_auriculaire=uicontrol('Style','slider','Max',1150,'Min',-1150,'va
         index_selected = get(hObject,'Value');
         
         if ( index_selected==2)
-            port_com='COM3';
+            port_com='/dev/tty.usbserial-A703V3A3';
         end
         if ( index_selected==3)
-            port_com='COM4';
+            port_com='/dev/tty.usbserial-A703V3A3';
         end
     end
 
