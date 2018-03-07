@@ -4,7 +4,7 @@
 %           nominal current:    Cn=0.211 A
 %           stall torque:       Cpd=4.38 mNm 
 %           starting current:   Cd=0.438 A
-% then the motor's torque constant Kt = (Cpd-Cn)/(Cd-Cn) = 10.35
+% then the motor's torque constant Kt = (Cpd-Cpn)/(Cd-Cn) = 10.35
 % INPUT:
 %   s is the serial port associated to the hand
 %   doigt is the integer number corresponding to the considered finger 
