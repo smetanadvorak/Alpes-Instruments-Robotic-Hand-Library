@@ -1,0 +1,19 @@
+function plot_critical_configuration (critical_data)
+    L1 = 0.03;
+    L2 = 0.02;
+    critical_data(1) = wrapToPi(critical_data(1));
+    critical_data(2) = wrapToPi(critical_data(2));
+    figure
+    plot(0, 0,'Marker','.','Color','r', 'MarkerSize',20);
+    hold on
+    plot([0, L1*cos(critical_data(1))], [0, L1*sin(critical_data(1))]);
+    hold on
+    plot(L1*cos(critical_data(1)), L1*sin(critical_data(1)),'Marker','.','Color','r', 'MarkerSize',20);
+    hold on
+    plot([L1*cos(critical_data(1)), L1*cos(critical_data(1))+L2*cos(critical_data(1) + critical_data(2))],...
+            [L1*sin(critical_data(1)), L1*sin(critical_data(1))+L2*sin(critical_data(1) + critical_data(2))]);
+    hold on
+    plot(L1*cos(critical_data(1))+ L2*cos(critical_data(1) + critical_data(2)),...
+            L1*sin(critical_data(1))+L2*sin(critical_data(1) + critical_data(2)),'Marker','.','Color','r', 'MarkerSize',20);
+    
+end
