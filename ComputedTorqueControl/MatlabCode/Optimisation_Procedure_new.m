@@ -15,17 +15,15 @@ function [Gamma,Fx_friction,Fy_friction,q,dq,dm,b, f_value] = Optimisation_Proce
     F =         [-F_measured*sin(alpha), F_measured*cos(alpha), 0]';
     
     % Substitute the joint coordinates values
-    %D = double(subs(D,{q1,q2,q3},{q(1),q(2),q(3)}));
-    %C = double(subs(C,{q1,q2,q3,dq1,dq2,dq3},{q(1),q(2),q(3),dq(1),dq(2),dq(3)}));
+    D = double(subs(D,{q1,q2,q3},{q(1),q(2),q(3)}));
+    C = double(subs(C,{q1,q2,q3,dq1,dq2,dq3},{q(1),q(2),q(3),dq(1),dq(2),dq(3)}));
     G = double(subs(G,{q1,q2,q3},{q(1),q(2),q(3)})); 
     J = double(subs(J,{q1,q2,q3},{q(1),q(2),q(3)}));        
     
     % Optimization problem definition aX = b
     Jt = J';
-    %dm = D*ddq + C*dq + G;
-    dm = 0;
-    % D*ddq + C*dq +
-    b = double(G - Jt*Kp*F_desired + Jt*Kp*F);
+    dm = D*ddq + C*dq + G;
+    b = double(D*ddq + C*dq + G - Jt*Kp*F_desired + Jt*Kp*F);
     % a = [eye(3), -Jt(:,1)*K(1,1)];
     
     % Optimization solver (0.61 sec)
@@ -38,7 +36,7 @@ function [Gamma,Fx_friction,Fy_friction,q,dq,dm,b, f_value] = Optimisation_Proce
     options = optimset('Display','off');
                         
     [X, f_value, exit_flag] = fmincon(@(X)objective_fun_integral_term(X,F_desired,F,b,Jt,Kp,Ki,alpha),...
-                    Initial_cond,Aineq,Bineq,[],[],[],[],[],options);%@(X)non_linear_constraint(X,F_measured,mu),[]);
+                    Initial_cond,Aineq,Bineq,[],[],[],[],[],options);
     Initial_cond = X;
     error_integral_x = Euler(error_integral_x, (F_desired(1)-F(1)-X(4)), 0.5);
     error_integral_y = Euler(error_integral_y, (F_desired(2)-F(2)-X(5)), 0.5);
